@@ -30,11 +30,11 @@ def do_tris_command(message):
 
     elif "открой калькулятор" in message:
         say_message("диктуй")
-        num_1 = int(listen_command())
+        num_1 = float(listen_command())
         say_message(str(num_1))
         choise = listen_command()
         say_message(str(choise))
-        num_2 = int(listen_command())
+        num_2 = float(listen_command())
         say_message(str(num_2))
     
         if choise == "плюс":
@@ -57,35 +57,6 @@ def do_tris_command(message):
             say_message(str('{} "возводим в степень" {} = '.format(num_1, num_2)))
             say_message(str(num_1 ** num_2))
 
-    elif "открой другой калькулятор" in message:
-            say_message("говори")
-            num_1 = float(listen_command())
-            say_message(str(num_1))
-            choise = listen_command()
-            say_message(str(choise))
-            num_2 = float(listen_command())
-            say_message(str(num_2))
-
-            if choise == "плюс":
-                say_message(str('{} + {} = '.format(num_1, num_2)))
-                say_message(str(num_1 + num_2))
-
-                
-            if choise =="минус":
-                    say_message(str('{} - {} = '.format(num_1, num_2)))
-                    say_message(str(num_1 - num_2))
-
-            if choise =="умножить":
-                    say_message(str('{} * {} = '.format(num_1, num_2)))
-                    say_message(str(num_1 * num_2))
-                    
-            if choise =="разделить": 
-                    say_message(str('{} / {} = '.format(num_1, num_2)))
-                    say_message(str(num_1 / num_2))
-
-            if choise =="возвести в степень": 
-                    say_message(str('{} ** {} = '.format(num_1, num_2)))
-                    say_message(str(num_1 ** num_2))
 
     elif "открой помощь" in message:
         f = open('помощь.txt', 'r', -1, 'utf-8')
