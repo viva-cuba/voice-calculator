@@ -30,11 +30,11 @@ def do_tris_command(message):
 
     elif "открой калькулятор" in message:
         say_message("диктуй")
-        num_1 = float(listen_command())
+        num_1 = int and float(listen_command())
         say_message(str(num_1))
         choise = listen_command()
         say_message(str(choise))
-        num_2 = float(listen_command())
+        num_2 = int and float(listen_command())
         say_message(str(num_2))
     
         if choise == "плюс":
@@ -56,7 +56,10 @@ def do_tris_command(message):
         if choise == "возвести в степень":
             say_message(str('{} "возводим в степень" {} = '.format(num_1, num_2)))
             say_message(str(num_1 ** num_2))
-
+            
+        if choise =="посчитать процент": 
+                say_message(str('({}) посчитать процент {} = '.format(num_1/100, num_2)))
+                say_message(str((num_1 / 100) * num_2))
 
     elif "открой помощь" in message:
         f = open('помощь.txt', 'r', -1, 'utf-8')
@@ -79,7 +82,7 @@ def say_message(message):
 
     voice = gTTS(message, lang="ru")
     file_voice_name = "_audio_" + \
-        str(time.time())+"_"+str(random.randint(0, 100000))+".mp3"
+    str(time.time())+"_"+str(random.randint(0, 100000))+".mp3"
     voice.save(file_voice_name)
     playsound.playsound(file_voice_name)
     os.remove(file_voice_name)
