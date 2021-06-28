@@ -4,7 +4,7 @@ import speech_recognition as sr
 import os
 import time
 import random
-
+import string
 
 
 def listen_command():
@@ -24,57 +24,33 @@ def listen_command():
 
 def do_tris_command(message):
     message = message.lower()
-
-    if "привет" in message:
-        say_message("здорова")
-
-    elif "открой калькулятор" in message:
-        say_message("диктуй")
-        num_1 = int and float(listen_command())
-        say_message(str(num_1))
-        choise = listen_command()
-        say_message(str(choise))
-        num_2 = int and float(listen_command())
-        say_message(str(num_2))
-    
-        if choise == "плюс":
-            say_message(str('{} "плюс" {} = '.format(num_1, num_2)))
-            say_message(str(num_1 + num_2))
-
-        if choise == "минус":
-            say_message(str('{} "минус" {} = '.format(num_1, num_2)))
-            say_message(str(num_1 - num_2))
-
-        if choise == "умножить":
-            say_message(str('{} "умножить" {} = '.format(num_1, num_2)))
-            say_message(str(num_1 * num_2))
-
-        if choise == "разделить":
-            say_message(str('{} "разделить" {} = '.format(num_1, num_2)))
-            say_message(str(num_1 / num_2))
-
-        if choise == "возвести в степень":
-            say_message(str('{} "возводим в степень" {} = '.format(num_1, num_2)))
-            say_message(str(num_1 ** num_2))
-            
-        if choise =="посчитать процент": 
-                say_message(str('({}) посчитать процент {} = '.format(num_1/100, num_2)))
-                say_message(str((num_1 / 100) * num_2))
-
-    elif "открой помощь" in message:
-        f = open('помощь.txt', 'r', -1, 'utf-8')
-        f_all = f.read()
-        say_message(f_all)
-        f.close()
-
-    elif "прочитать помощь" in message:
-        os.startfile("помощь.txt")
-
-    elif "пока" in message:
+    if 'выход' in message:
         exit()
-
-    else:
-        say_message("что то не так давай снова")
+    try:
+            say_list = message.split()
+            num_1,num_2 = int and float((say_list[-3]).strip()), int and float((say_list[-1]).strip())
+            resul = [say_list[0].strip(),say_list[-2].strip()]
+            for i in resul:
+                if 'разделить' in i or 'умножить' in i or 'fals' in i or 'плюс' in i or 'минус' in i or i == 'x' or i == '/' or i =='+' or i == '-' or i == '*':
+                    result = i
+                    break
+                else:
+                    result = resul[1]
+            if result == "+" or 'плюс' in result:
+                res = num_1 + num_2
+            elif result == "-" or 'минус' in result:
+                res = num_1 - num_2
+            elif result == "х" or 'умножить' in result:
+                res = num_1 * num_2
+            elif result == "/" or 'разделить' in result:
+                if num_2 != 0:
+                    res = num_1 / num_2
+                else:
+                    say_message("Делить на ноль невозможно")
+            say_message("{0} {1} {2} = {3}".format(say_list[-3], say_list[-2], say_list[-1], res))
+    except:
+        pass
+    
 
 
 
@@ -90,7 +66,7 @@ def say_message(message):
 
 
 if __name__ == '__main__':
-    say_message("привет! Я голосовой калькулятор. Скажи команду открой помощь и я расскажу как это работает")
+    say_message("скажи 2+2 когда наиграешься скажи выход")
 
     while True:
         command = listen_command()  # слушает команду
