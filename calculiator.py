@@ -56,7 +56,7 @@ def say_message(message):
 
 
 if __name__ == '__main__':
-    say_message("скажи 2+2 когда наиграешься скажи выход")
+    say_message("скажи сколько будет 2+2 когда наиграешься скажи выход")
 
     while True:
         command = listen_command()  # слушает команду
