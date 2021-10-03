@@ -26,32 +26,22 @@ def do_tris_command(message):
     message = message.lower()
     if 'выход' in message:
         exit()
-    try:
-            say_list = message.split()
-            num_1,num_2 = int and float((say_list[-3]).strip()), int and float((say_list[-1]).strip())
-            resul = [say_list[0].strip(),say_list[-2].strip()]
-            for i in resul:
-                if 'разделить' in i or 'умножить' in i or 'fals' in i or 'плюс' in i or 'минус' in i or i == 'x' or i == '/' or i =='+' or i == '-' or i == '*':
-                    result = i
-                    break
-                else:
-                    result = resul[1]
-            if result == "+" or 'плюс' in result:
-                res = num_1 + num_2
-            elif result == "-" or 'минус' in result:
-                res = num_1 - num_2
-            elif result == "х" or 'умножить' in result:
-                res = num_1 * num_2
-            elif result == "/" or 'разделить' in result:
-                if num_2 != 0:
-                    res = num_1 / num_2
-                else:
-                    say_message("Делить на ноль невозможно")
-            say_message("{0} {1} {2} = {3}".format(say_list[-3], say_list[-2], say_list[-1], res))
-    except:
-        pass
-    
-
+    say_list = message.split()
+    num_1, sign, num_2 = int((say_list[-3]).strip()), (say_list[-2]).strip(), int((say_list[-1]).strip())
+    resul = [say_list[0].strip(),say_list[-2].strip()]
+    if sign == "+" or 'плюс' in sign:
+        res = num_1 + num_2
+    elif sign == "-" or 'минус' in sign:
+        res = num_1 - num_2
+    elif sign == "х" or 'умножить' in sign:
+        res = num_1 * num_2
+    elif sign == "/" or 'разделить' in sign:
+        if num_2 != 0:
+            res = num_1 / num_2
+        else:
+            say_message("Делить на ноль невозможно")
+            return say_list
+    say_message("{0} {1} {2} = {3}".format(say_list[-3], say_list[-2], say_list[-1], res))
 
 
 def say_message(message):
