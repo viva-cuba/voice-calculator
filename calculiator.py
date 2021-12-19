@@ -26,6 +26,7 @@ def listen_command():
 def do_tris_command(message):
     message = message.lower()
     if 'выход' in message or 'спасибо' in message:
+        say_message('калькулятор закрыт')
         exit()
     try:
         say_list = message.split()
