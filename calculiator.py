@@ -38,7 +38,7 @@ def do_tris_command(message):
         res = num_1 + num_2
     elif sign == "-" or 'минус' in sign:
         res = num_1 - num_2
-    elif sign == "x" or 'умножить' in sign:
+    elif sign == "х" or 'умножить' in sign:
         res = num_1 * num_2
     elif sign == "/" or 'разделить' in sign:
         if num_2 != 0:
@@ -54,7 +54,7 @@ def do_tris_command(message):
     
     result = ("{0} {1} {2} = {3}".format(say_list[-3], say_list[-2], say_list[-1], res))
     
-    say_message(result.replace("/", 'разделить на').replace('x', 'умножить на').replace('-', 'минус'))
+    say_message(result.replace("/", 'разделить на').replace('х', 'умножить на').replace('-', 'минус'))
 
 
 def say_message(message):
@@ -69,7 +69,7 @@ def say_message(message):
 
 
 if __name__ == '__main__':
-    say_message("скажи сколько будет 2+2 когда наиграешься скажи выход или спасибо")
+    say_message("скажи например: сколько будет 2+2 когда наиграешься скажи выход или спасибо")
 
     while True:
         command = listen_command()  # слушает команду
