@@ -30,17 +30,17 @@ def do_tris_command(message):
         exit()
     try:
         say_list = message.split()
-        num_1, sign, num_2 = int((say_list[-3]).strip()), (say_list[-2]).strip(), int((say_list[-1]).strip())
+        num_1, sign, num_2 = int((say_list[-3]).strip()), say_list[-2].strip(), int((say_list[-1]).strip())
         resul = [say_list[0].strip(),say_list[-2].strip()]
     except IndexError:
         return say_list    
-    if sign == "+" or 'плюс' in sign:
+    if sign == "+" in sign:
         res = num_1 + num_2
-    elif sign == "-" or 'минус' in sign:
+    elif sign == "-" in sign:
         res = num_1 - num_2
-    elif sign == "х" or 'умножить' in sign:
+    elif sign == "х" in sign:
         res = num_1 * num_2
-    elif sign == "/" or 'разделить' in sign:
+    elif sign == "/" in sign:
         if num_2 != 0:
             res = num_1 / num_2
             res = float("{0:.2f}".format(res))
