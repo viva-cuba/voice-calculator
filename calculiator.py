@@ -33,7 +33,9 @@ def do_tris_command(message):
         num_1, sign, num_2 = int((say_list[-3]).strip()), say_list[-2].strip(), int((say_list[-1]).strip())
         resul = [say_list[0].strip(),say_list[-2].strip()]
     except IndexError:
-        return say_list    
+        return say_list
+    except ValueError:
+        return say_list
     if sign == "+" in sign:
         res = num_1 + num_2
     elif sign == "-" in sign:
