@@ -31,7 +31,6 @@ def do_tris_command(message):
     try:
         say_list = message.split()
         num_1, sign, num_2 = int((say_list[-3]).strip()), say_list[-2].strip(), int((say_list[-1]).strip())
-        resul = [say_list[0].strip(),say_list[-2].strip()]
     except IndexError:
         return say_list
     except ValueError:
@@ -40,7 +39,7 @@ def do_tris_command(message):
         res = num_1 + num_2
     elif sign == "-" in sign:
         res = num_1 - num_2
-    elif sign == "х" in sign:
+    elif sign == "х" or 'умножить на' or 'умножить' in sign:
         res = num_1 * num_2
     elif sign == "/" in sign:
         if num_2 != 0:
@@ -56,7 +55,7 @@ def do_tris_command(message):
     
     result = ("{0} {1} {2} = {3}".format(say_list[-3], say_list[-2], say_list[-1], res))
     
-    say_message(result.replace("/", 'разделить на').replace('х', 'умножить на').replace('-', 'минус'))
+    say_message(result.replace("/", 'разделить на').replace('-', 'минус'))
 
 
 def say_message(message):
