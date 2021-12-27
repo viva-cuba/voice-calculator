@@ -39,7 +39,7 @@ def do_tris_command(message):
         res = num_1 + num_2
     elif sign == "-" in sign:
         res = num_1 - num_2
-    elif sign == "х" or 'умножить на' or 'умножить' in sign:
+    elif sign == "х"in sign:
         res = num_1 * num_2
     elif sign == "/" in sign:
         if num_2 != 0:
